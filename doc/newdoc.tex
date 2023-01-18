@@ -1,0 +1,285 @@
+%%% you can find and change template keywords by 
+%%% searching "yyy" all of this template keywords 
+%%% starts by "yyy".
+
+\documentclass[a4paper, 12pt]{article}
+
+
+%%% packages %%%
+\usepackage[T1]{fontenc}
+\usepackage{tgbonum}
+\usepackage{tabto}
+\usepackage[top=2cm, bottom=2cm, right=2cm, left=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{proof}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{ulem}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+
+
+%%% defines %%%
+\def\pfbox % new experimental version (DEK, November 88)
+{{\ooalign{\hfil\lower.06ex % a smiley face
+\hbox{$\scriptscriptstyle\frown$}\hfil\crcr
+ \hfil\lower.7ex\hbox{\"{}}\hfil\crcr
+ \mathhexbox20D}}}
+
+%%% newcounter %%%
+\newcounter{stepcounter}
+ 
+%%% newenvironment %%%
+
+
+%%% new theoremm %%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Note}[section]
+
+%%% definecolors %%%
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{ngold}{rgb}{0.9, 0.6, 0.1}
+\definecolor{wblue}{rgb}{0.28, 0.24, 0.55}
+\definecolor{dgreen}{rgb}{0, 1, 0}
+\definecolor{pred}{rgb}{1, 0.2, 0.2}
+\definecolor{sred}{rgb}{0.55, 0, 0}
+
+%%% newcommand %%%
+\newcommand{\noticon}{\includegraphics[width=15pt]{constants/note.png}}
+\newcommand{\deficon}{\includegraphics[width=20pt]{constants/def.png}}
+\newcommand{\piticon}{\includegraphics[width=25pt]{constants/pitfall.png}}
+\newcommand{\stepicon}{\includegraphics[width=25pt]{constants/step.png}}
+\newcommand{\cmdicon}{\includegraphics[width=20pt]{constants/terminal.png}}
+
+
+\newcommand{\mynote}[1]{\vspace{10pt} 
+\noindent
+\begin{tabular}{p{0.1\textwidth} p{0.85\textwidth}}
+  \hspace{0.5em}\raisebox{-0.3em} \noticon & \textbf{\textcolor{wblue}{#1}} 
+\end{tabular}}
+
+\newcommand{\mydef}[2]{\vspace{10pt} 
+\noindent
+\begin{tabular}{p{0.1\textwidth} p{0.85\textwidth}}
+  \hspace{0.5em}\raisebox{-0.3em} \deficon & \textit{\textbf{\textcolor{wblue}{#1}}}  #2 
+\end{tabular} 
+\\ \\}
+
+\newcommand{\mypit}[2]{\vspace{10pt} 
+\noindent
+\begin{tabular}{p{0.1\textwidth} p{0.85\textwidth}}
+  \hspace{0.5em}\raisebox{-0.4em} \piticon & \textbf{\textcolor{pred}{#1!}}  #2 
+\end{tabular} 
+\\}
+
+\newcommand{\mystepbystep}[1]{\setcounter{stepcounter}{1}
+\vspace{10pt} 
+\noindent
+\begin{tabular}{p{0.1\textwidth} p{0.85\textwidth}}
+  \hspace{0.5em}\raisebox{-0.3em} \stepicon & {\large \textbf{\textcolor{wblue}{#1}}}
+\end{tabular} 
+\\ \\}
+
+\newcommand{\mystep}[1]{
+    \noindent
+    \begin{tabular}{p{0.1\textwidth} p{0.85\textwidth}}
+      {\Large \thestepcounter}& #1
+    \end{tabular} 
+    \addtocounter{stepcounter}{1} \\
+}
+
+\newcommand{\mycommand}[1]{
+\vspace{10pt} 
+\noindent
+\begin{tabular}{p{0.1\textwidth} p{0.85\textwidth}}
+  \hspace{0.5em}\raisebox{-0.5em} \cmdicon & {\textbf{\textcolor{wblue}{#1}}}
+\end{tabular}
+}
+
+\newcommand{\mycodeinput}[1]{\noindent \lstinputlisting[firstline=0, lastline=100, caption=#1, captionpos=b]{#1}}
+
+%%% package settings %%%
+\lstset{
+  backgroundcolor=\color{backcolour},
+  frame=tblr,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+
+
+%%% begin document %%%
+\begin{document}
+
+\title{learn-python}
+\author{Abbas Yazdanmehr \\ \texttt{abbas.yazdanmehr1@gmail.com}}
+\date{last update: \today}
+\maketitle
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Python Basics}
+
+\subsection{Run Python App}
+
+\mycommand{Run Python file and continue file in scripting space}
+\begin{lstlisting}
+$ python -i <file_name>.py
+
+----- ex -----
+D:\learn\learn-python\doc>python -i main.py
+code output: 21
+>>> i
+21  
+>>> i**2
+441 
+>>> exit()
+\end{lstlisting}
+
+\mycommand{Save app output as a \textit{.txt} file in cmd}
+\begin{lstlisting}
+$ Python <app_name> > <output_file_name>.txt
+
+----- ex -----
+D:\learn\learn-python\doc>python main.py > output.txt
+
+D:\learn\learn-python\doc>more output.txt 
+code output: 21
+\end{lstlisting}
+
+\mypit{Pay attention to Python's operator priority}{}
+  \begin{lstlisting}
+  >>> 3 + 5 % 4 == 0
+  False
+  >>> (3 + 5) % 4 == 0
+  True
+  \end{lstlisting}
+
+\subsection{Python Virtual Environment}
+
+\mycommand{Create - Activate - Deactivate in cmd}
+\begin{lstlisting}
+-- create
+$ python -m venv <virtual_environment_name>
+
+-- activate
+$ <virtual_environment_name>\Scripts\activate.bat
+
+-- deactivate
+$ deactivate
+
+----- ex -----
+D:\dir/b
+code
+learn
+library
+
+D:\python -m venv prjenv
+
+D:\dir/b
+code
+learn
+library
+prjenv
+
+D:\prjenv\Scripts\activate
+
+(prjenv) D:\pip install lightweight
+Collecting lightweight
+  Downloading lightweight-1.0.0.dev52-py3-none-any.whl (256 kB)
+     ------------------------------------ 256.9/256.9 KB 450.9 kB/s eta 0:00:00
+...
+
+(prjenv) D:\pip freeze
+MarkupSafe==2.1.2
+mistune==0.8.4
+...
+
+(prjenv) D:\deactivate
+D:\
+\end{lstlisting}
+
+\mynote{Python Root packages usual path in windows}
+\begin{verbatim}
+C:\Users\User\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9\
+_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\
+\end{verbatim}
+
+\mycommand{See all installed packages in current python environment}
+\begin{lstlisting}
+$ pip freeze
+
+----- ex ------
+C:\Users\User>pip freeze
+contourpy==1.0.7
+cycler==0.11.0
+fonttools==4.38.0
+\end{lstlisting}
+
+\mycommand{Save all package names in \textit{requirements.txt}}
+\begin{lstlisting}
+$ pip freeze > requirements.txt
+
+----- ex ------
+C:\Users\User>pip freeze > requirements.txt
+
+C:\Users\User>more requirements.txt
+contourpy==1.0.7
+cycler==0.11.0
+fonttools==4.38.0
+\end{lstlisting}
+
+\mycommand{Delete Packages}
+\begin{lstlisting}
+-- first save all package names in "requirements.txt"
+
+-- one by one	 
+$ pip uninstall -r requirements.txt
+
+-- all			 
+$ pip uninstall -r requirements.txt -y 
+
+----- ex ------
+C:\Users\User>pip freeze
+contourpy==1.0.7
+cycler==0.11.0
+fonttools==4.38.0
+
+C:\Users\User>pip freeze > requirements.txt
+
+C:\Users\User>pip freeze
+
+C:\Users\User>
+\end{lstlisting}
+
+
+\newpage
+
+\section{Python Packages}
+
+
+\end{document}
