@@ -46,11 +46,10 @@
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
-\definecolor{ngold}{rgb}{0.9, 0.6, 0.1}
-\definecolor{wblue}{rgb}{0.28, 0.24, 0.55}
-\definecolor{dgreen}{rgb}{0, 1, 0}
-\definecolor{pred}{rgb}{1, 0.2, 0.2}
-\definecolor{sred}{rgb}{0.55, 0, 0}
+\definecolor{blue1}{rgb}{0, 0, 0.55}
+\definecolor{green1}{rgb}{0, 0.4, 0}
+\definecolor{red1}{rgb}{0.55, 0, 0}
+\definecolor{purple1}{rgb}{0.3, 0, 0.5}
 
 %%% newcommand %%%
 \newcommand{\noticon}{\includegraphics[width=15pt]{constants/note.png}}
@@ -59,33 +58,25 @@
 \newcommand{\stepicon}{\includegraphics[width=25pt]{constants/step.png}}
 \newcommand{\cmdicon}{\includegraphics[width=20pt]{constants/terminal.png}}
 
-
 \newcommand{\mynote}[1]{\vspace{10pt} 
 \noindent
-\begin{tabular}{p{0.1\textwidth} p{0.85\textwidth}}
-  \hspace{0.5em}\raisebox{-0.3em} \noticon & \textbf{\textcolor{wblue}{#1}} 
-\end{tabular}}
+  \hspace{0.5em}\raisebox{-0.3em} \noticon \quad \textbf{\textcolor{blue1}{#1}} 
+}
 
-\newcommand{\mydef}[2]{\vspace{10pt} 
+\newcommand{\mydef}[1]{\vspace{10pt} 
 \noindent
-\begin{tabular}{p{0.1\textwidth} p{0.85\textwidth}}
-  \hspace{0.5em}\raisebox{-0.3em} \deficon & \textit{\textbf{\textcolor{wblue}{#1}}}  #2 
-\end{tabular} 
-\\ \\}
+  \hspace{0.5em}\raisebox{-0.3em} \deficon \quad \textit{\textbf{\textcolor{blue1}{#1}}}
+\\[5pt]}
 
-\newcommand{\mypit}[2]{\vspace{10pt} 
+\newcommand{\mypit}[1]{\vspace{10pt} 
 \noindent
-\begin{tabular}{p{0.1\textwidth} p{0.85\textwidth}}
-  \hspace{0.5em}\raisebox{-0.4em} \piticon & \textbf{\textcolor{pred}{#1!}}  #2 
-\end{tabular} 
-\\}
+  \hspace{0.5em}\raisebox{-0.4em} \piticon \quad \textbf{\textcolor{red1}{#1!}} 
+\\[5pt]}
 
 \newcommand{\mystepbystep}[1]{\setcounter{stepcounter}{1}
 \vspace{10pt} 
 \noindent
-\begin{tabular}{p{0.1\textwidth} p{0.85\textwidth}}
-  \hspace{0.5em}\raisebox{-0.3em} \stepicon & {\large \textbf{\textcolor{wblue}{#1}}}
-\end{tabular} 
+  \hspace{0.5em}\raisebox{-0.5em} \stepicon \quad {\large \textbf{\textcolor{blue1}{#1}}}
 \\ \\}
 
 \newcommand{\mystep}[1]{
@@ -99,9 +90,7 @@
 \newcommand{\mycommand}[1]{
 \vspace{10pt} 
 \noindent
-\begin{tabular}{p{0.1\textwidth} p{0.85\textwidth}}
-  \hspace{0.5em}\raisebox{-0.5em} \cmdicon & {\textbf{\textcolor{wblue}{#1}}}
-\end{tabular}
+  \hspace{0.5em}\raisebox{-0.5em} \cmdicon \quad {\textbf{\textcolor{blue1}{#1}}}
 }
 
 \newcommand{\mycodeinput}[1]{\noindent \lstinputlisting[firstline=0, lastline=100, caption=#1, captionpos=b]{#1}}
@@ -144,6 +133,10 @@
 
 \section{Python Basics}
 
+\mydef{Python}{Python is a scripting programming language that means it
+has interpreter instead of compiler.}
+
+
 \subsection{Run Python App}
 
 \mycommand{Run Python file and continue file in scripting space}
@@ -171,7 +164,8 @@ D:\learn\learn-python\doc>more output.txt
 code output: 21
 \end{lstlisting}
 
-\mypit{Pay attention to Python's operator priority}{}
+\mypit{Pay attention to Python's operator priority}
+See this:
   \begin{lstlisting}
   >>> 3 + 5 % 4 == 0
   False
@@ -276,6 +270,10 @@ C:\Users\User>pip freeze
 C:\Users\User>
 \end{lstlisting}
 
+\mystepbystep{Connect Python app to Google Sheet}
+\mystep{first}
+\mystep{second}
+\mystep{third}
 
 \newpage
 
